@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+  xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
+<head>
+<meta charset="EUC-KR">
+<title>Index</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+<nav class="navbar navbar-expand-sm bg-primary navbar-dark" th:include = "/part/menu::header"></nav>
+<div class="container text-center">	 
+	<h2 class="font-weight-bold text-primary">EPL 현황</h2>
+	<div class="table-responsive">
+		<table class="table table-hover table-bordered table-striped">
+			<thead>
+				<tr>
+					<th>#</th>
+					<th>날짜</th>
+					<th>홈</th>
+					<th>상대</th>
+					<th>횸 총골</th>
+					<th>상대 총골</th>
+					<th>결과</th>
+					<th>전반 홈 골</th>
+					<th>전반 상대 골</th>
+					<th>전반 결과</th> 
+					<th>심판</th>
+					<th>홈 골 시도</th>
+					<th>상대 골 시도</th>
+					<th>홈 골</th>
+					<th>상대 골</th>
+					<th>홈 코너킥</th>
+					<th>상대 코너킥</th>
+					<th>홈 파울</th>
+					<th>상대 파울</th> 
+					<th>홈 옐로카드</th>
+					<th>상대 옐로카드</th>
+					<th>홈 레드</th>
+					<th>상대 레드</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="team, index : ${list}">
+					<td th:text="${index.index+1}"></td>
+					<td th:text="${team.date}"></td>
+					<td th:text="${team.hometeam}"></td>
+					<td th:text="${team.awayteam}"></td>
+					<td th:text="${team.fthg}"></td>
+					<td th:text="${team.ftag}"></td>
+					<td th:text="${team.ftr}"></td>
+					<td th:text="${team.hthg}"></td>
+					<td th:text="${team.htag}"></td>
+					<td th:text="${team.htr}"></td>
+					<td th:text="${team.referee}"></td>
+					<td th:text="${team.hs}"></td>
+					<td th:text="${team.as}"></td>
+					<td th:text="${team.hst}"></td>
+					<td th:text="${team.ast}"></td>
+					<td th:text="${team.hc}"></td>
+					<td th:text="${team.ac}"></td>
+					<td th:text="${team.hf}"></td>
+					<td th:text="${team.af}"></td> 
+					<td th:text="${team.hy}"></td>
+					<td th:text="${team.ay}"></td>
+					<td th:text="${team.hr}"></td>
+					<td th:text="${team.ar}"></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div th:include = "/part/menu::footer"></div>
+</div>
+</body>
+</html>

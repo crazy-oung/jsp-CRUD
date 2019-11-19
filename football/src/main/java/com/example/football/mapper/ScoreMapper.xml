@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+  
+<mapper namespace="com.example.football.mapper.ScoreMapper">
+	<select id="selectFootballList" resultType="com.example.football.vo.Football">
+		SELECT * FROM football
+	</select>  
+	
+	<select id="selectScoreBoardList" resultType="com.example.football.vo.Score">
+		SELECT team as teamName, SUM(t.win) AS win, SUM(t.lose) AS lose , sum(t.draw) AS draw, (SUM(t.win)*3 + sum(t.draw)) AS score, (SUM(t.win)+SUM(t.lose)+sum(t.draw)) AS total
+		FROM (
+			SELECT hometeam AS team, SUM(ftr='h') AS win, SUM(ftr='a') AS lose, SUM(ftr='d') AS draw
+			FROM football
+			GROUP BY team
+			UNION ALL 
+			SELECT awayteam AS team, SUM(ftr='a') AS win, SUM(ftr='h') AS lose, SUM(ftr='d') AS draw
+			FROM football
+			GROUP BY team 
+		)t
+		GROUP BY t.team 
+		ORDER BY score DESC;
+	</select>
+	
+</mapper>

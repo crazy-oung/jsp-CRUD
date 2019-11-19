@@ -10,8 +10,8 @@
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark" th:include = "/part/menu::header"></nav>
 <div class="container text-center">
 	<h2 class="font-weight-bold">축구 스코어 보드</h2>
-	<table class="table table-hover table-bordered">
-		<thead>
+	<table class="table table-hover table-bordered table-secondary">
+		<thead class="thead-dark">
 			<tr>
 				<th width="10%">순위</th>
 				<th>팀명</th>
@@ -22,7 +22,7 @@
 				<th>참가횟수</th>
 			</tr>
 		</thead>
-		<tbody>
+		<tbody class="thead-light">
 			<tr th:each="team, index : ${list}">
 				<td><p th:text="${index.index+1}"></p></td>
 				<td><b th:text="${team.teamName}"></b></td>
